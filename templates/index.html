@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords"
+        content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 4 admin, bootstrap 4, css3 dashboard, bootstrap 4 dashboard, AdminWrap lite admin bootstrap 4 dashboard, frontend, responsive bootstrap 4 admin template, Elegant admin lite design, Elegant admin lite dashboard bootstrap 4 dashboard template">
+    <meta name="description"
+        content="Elegant Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
+    <meta name="robots" content="noindex,nofollow">
+    <title>Tera-Search</title>
+    <!-- Favicon icon -->
+    
+    <!-- module paginations -->
+
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='assets/images/favicon.png') }}">
+    <!-- This page CSS -->
+    <!-- chartist CSS -->
+    <link href="{{ url_for('static', filename='assets/node_modules/morrisjs/morris.css') }}" rel="stylesheet">
+    <!--c3 plugins CSS -->
+    <link href="{{ url_for('static', filename='assets/node_modules/c3-master/c3.min.css') }}" rel="stylesheet">
+    <!-- Custom CSS -->
+
+    <link href="{{ url_for('static', filename='dist/css/style.css') }}" rel="stylesheet">
+    <!-- Dashboard 1 Page CSS -->
+    <link href="{{ url_for('static', filename='dist/css/pages/dashboard1.css') }}" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/74fa2322ea.js"></script>
+    <style type="text/css">
+    /*              level 1 head   2 content 3 content  4 body*/
+
+    .thead-dark{
+        background-color: #2b2f3a;
+        color: #fefefe;
+    }
+    .tbody-dark{
+        background-color: #17191d;/* #2b2f3a, #1c1d1f, #171717 #111110; */
+        color: #fefefe;
+
+    }
+    .Tresult-dark{
+         background-color: #1c1d1f;
+    }
+
+    .custom-class{
+        display:flex;
+        justify-content:space-between;
+    }
+    .footer-b{
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        height: 40px;
+        text-indent: 10px;
+        grid-auto-rows: 60px;
+        grid-gap: 20px;
+        text-align: center;
+        justify-items: center;
+    }
+    .custom-class select{
+        border: none;
+        appearance: none;
+        background-color: transparent;
+        text-decoration: none;
+        outline: none;
+        text-align: center;
+        color: #6c757d;
+         }
+
+    .custom-class select[name='pages'] {
+        padding: 2px 19px 0px;
+        transform: translate(-4px);
+        }
+
+    .custom-class select[name='proxy'] {
+        padding: 2px 5px 2px;
+        transform: translate(15px);
+        }
+
+    .custom-class select::-ms-expand {
+        display: none;
+        }
+
+    .custom-class select:focus{
+        border-color:none;
+        outline: none;
+        background-color: black;
+        color: white;
+        }
+
+    .custom-right{
+        float:right;
+    }
+
+    input[type="checkbox"]{
+      appearance:none;
+      width:40px;
+      height:16px;
+      border:1px solid #aaa;
+      border-radius:2px;
+      background:#545b62;
+      position:relative;
+      display:inline-block;
+      overflow:hidden;
+      vertical-align:middle;
+      transition: background 0.3s;
+      box-sizing:border-box;
+    }
+    input[type="checkbox"].dns{
+        z-index: 1;
+        content: '';
+        transform: translate(12px);
+    }
+    input[type="checkbox"]:after{
+      content:'';
+      position:absolute;
+      top:-1px;
+      left:-1px;
+      width:16px;
+      height:20px;
+      background:#868e96;
+      border:1px solid #aaa;
+      border-radius:2px;
+      transition: left 0.1s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    }
+    input[type="checkbox"]:checked{
+      background:#488AC7;
+      border-color:#8daee5;
+    }
+    input[type="checkbox"]:checked:after{
+      left:23px;
+      border-color:#8daee5;
+    }
+    a.tera-title{
+        font-size: 17.3px;
+    }
+    tbody tr td{
+        text-align: justify;
+        text-align-last: left;
+    }
+    .social-menu{
+        text-indent: 6px;
+        text-align: right;
+    }
+    .footer-menu{
+        text-indent: 2.3px;
+        text-align: right;
+    }
+    #pagination-wrapper{
+        display: flex;
+        flex-wrap:wrap;
+        justify-content: center;
+        align-items: center;
+        word-spacing: 5px;
+    }
+    .tera-button{
+        border: none;
+        outline: none;
+        text-indent: 6px;
+    }
+    .tera-button:hover{
+        background-color: white;
+    }
+    .tera-button:focus { 
+        outline: none;
+        background-color: white; 
+    }
+    .tera-button:first-child{
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+    }
+    .tera-button:last-child {
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+    </style>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+
+<body class="skin-default-dark fixed-layout">
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <div class="loader">
+            <div class="loader__figure"></div>
+            <p class="loader__label">Tera-Search</p>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <header class="topbar" id="navbar">
+            <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+                <!-- ============================================================== -->
+                <!-- Logo -->
+                <!-- ============================================================== -->
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="index.html">
+                        <!-- Logo icon --><b>
+                            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+                            <!-- Dark Logo icon -->
+                            <img src="{{ url_for('static', filename='assets/images/tera-icon.png') }}" alt="homepage" class="dark-logo" />
+                            <!-- Light Logo icon -->
+                            <img src="{{ url_for('static', filename='assets/images/logo-light-icon.png') }}" alt="homepage" class="light-logo" />
+                        </b>
+                        <!--End Logo icon -->
+                        <!-- Logo text --><span>
+                            <!-- dark Logo text -->
+                            <img src="{{ url_for('static', filename='assets/images/text-icon.png') }}" alt="homepage" class="dark-logo" />
+                            <!-- Light Logo text -->
+                            <img src="{{ url_for('static', filename='assets/images/logo-light-text.png') }}" class="light-logo" alt="homepage" /></span>
+                    </a>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Logo -->
+                <!-- ============================================================== -->
+                <div class="navbar-collapse">
+                    <!-- ============================================================== -->
+                    <!-- toggle and nav items -->
+                    <!-- ============================================================== -->
+                    <ul class="navbar-nav mr-auto">
+                        <!-- This is  -->
+                        <li class="nav-item hidden-sm-up"> <a class="nav-link nav-toggler waves-effect waves-light"
+                                href="javascript:void(0)"><i class="ti-menu"></i></a></li>
+                        <!-- ============================================================== -->
+                        <!-- Search -->
+                        <!-- ============================================================== -->
+                        <li class="nav-item search-box"> <a class="nav-link waves-effect waves-dark"
+                                href="javascript:void(0)"><i class="fa fa-search"></i></a>
+                            <teraform class="app-search" method="POST">
+                                <input type="text" class="form-control" placeholder="Search &amp; enter"> 
+                                
+                                <a class="srh-btn"><i class="fa-solid fa-magnifying-glass fa-fw"></i></a>
+                            </teraform>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav my-lg-0">
+                        <!-- ============================================================== -->
+                        <!-- User profile and search -->
+                        <!-- ============================================================== -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href=""
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img
+                                    src="{{ url_for('static', filename='assets/images/users/1.jpg') }}" alt="user" class="img-circle" width="30"></a>
+                        </li>
+                        <!-- ============================================================== -->
+                        <!-- User profile and search -->
+                        <!-- ============================================================== -->
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- ============================================================== -->
+        <!-- End Topbar header -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <aside class="left-sidebar">
+            <div class="d-flex no-block nav-text-box align-items-center">
+                <span><img src="{{ url_for('static', filename='assets/images/tera-icon.png') }}" alt="elegant admin template') }}"></span>
+                <a class="waves-effect waves-dark ml-auto hidden-sm-down" href="javascript:void(0)"><i
+                        class="ti-menu"></i></a>
+                <a class="nav-toggler waves-effect waves-dark ml-auto hidden-sm-up" href="javascript:void(0)"><i
+                        class="ti-menu ti-close"></i></a>
+            </div>
+            <!-- Sidebar scroll-->
+            <div class="scroll-sidebar">
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav">
+                        <li>
+                            <a class="waves-effect waves-dark">
+                                <div class="custom-class">
+                                    <span class="hide-menu">Total Result</span>
+                                    <select name="pages" id="per-pages" class="select-1">
+                                        <option value="20">20</option>
+                                        <option value="45">45</option>
+                                        <option value="100">100</option>
+                                        <option value="600">600</option>
+                                    </select>
+                                    <i class="custom-right fa-solid fa-table fa-fw"></i>
+                                </div>
+                            </a>                        
+                        </li>
+                        <li> 
+                            <a class="waves-effect waves-dark">
+                                <div class="custom-class">
+                                    <span class="hide-menu">Proxy</span>
+                                    <select name="proxy" id="proxy-select" class="select-2">
+                                        <option value="default">Default</option>
+                                        <option value="bot">Bot</option>
+                                        <option value="random">Random</option>
+                                    </select>
+                                    <i class="custom-right fa-solid fa-masks-theater fa-fw"></i>
+                                </div>
+                                
+                            </a>                        
+                        </li>
+                        <li> 
+                            <a class="waves-effect waves-dark">
+                                <div class="custom-class">
+                                    <span class="hide-menu">Security</span>
+                                    <input type="checkbox" id="security" name="security"/>
+                                    <i class="custom-right fa-solid fa-shield-dog fa-fw"></i>
+                                </div>
+                                
+                            </a>
+                        </li>
+                        <li> 
+                            <a class="waves-effect waves-dark">
+                                <div class="custom-class">
+                                    <span class="hide-menu">DNS</span>
+                                    <input type="checkbox" class="dns" id="dns" name="dns"/>
+                                    <i class="custom-right fa-solid fa-bolt fa-fw"></i>
+                                </div>
+                                
+                            </a>
+                        </li>
+                        <li> 
+                            <a class="waves-effect waves-dark">
+                                <div class="custom-class">
+                                    <span class="hide-menu">Themes</span>
+                                    <input type="checkbox" id="themes" name="themes"/>
+                                    <i class="custom-right fa-solid fa-images fa-fw"></i>
+                                </div>
+                                
+                            </a>
+                        </li>
+                        <li> 
+                            <a class="waves-effect waves-dark">
+                                <div class="custom-class">
+                                    <span class="hide-menu">Download</span>
+                                    <i class="custom-right fa-solid fa-download fa-fw"></i>
+                                </div>
+                                
+                            </a>
+                        </li>
+                        <li> 
+                            <a class="waves-effect waves-dark" href="#" aria-expanded="false">
+                            <i class="fa-solid fa-code"></i></i><span class="hide-menu"></span>About</a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- End Sidebar navigation -->
+            </div>
+            <!-- End Sidebar scroll-->
+        </aside>
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper" id="pages">
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid" id="tera-pages">
+                <!-- ============================================================== -->
+                <!-- Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== 
+                <div class="row page-titles">
+                    <div class="col-md-5 align-self-center">
+                        <h4 class="text-themecolor">Dashboard</h4>
+                    </div>
+                    <div class="col-md-7 align-self-center text-right">
+                        <div class="d-flex justify-content-end align-items-center">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                                <li class="breadcrumb-item active">Dashboard</li>
+                            </ol>
+                            <a class="btn btn-success d-xnone d-lg-block m-l-15"
+                                href="https://wrappixel.com/templates/elegant-admin/"> Upgrade To Pro</a>
+                        </div>
+                    </div>
+                </div>-->
+                <!-- ============================================================== -->
+                <!-- End Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Yearly Sales -->
+                <!--
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="card oh">
+                            <div class="card-body">
+                                <div class="d-flex m-b-30 align-items-center no-block">
+                                    <h5 class="card-title ">Yearly Sales</h5>
+                                    <div class="ml-auto">
+                                        <ul class="list-inline font-12">
+                                            <li><i class="fa fa-circle text-info"></i> Iphone</li>
+                                            <li><i class="fa fa-circle text-primary"></i> Ipad</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div id="morris-area-chart" style="height: 350px;"></div>
+                            </div>
+                            <div class="card-body bg-light">
+                                <div class="row text-center m-b-20">
+                                    <div class="col-lg-4 col-md-4 m-t-20">
+                                        <h2 class="m-b-0 font-light">6000</h2><span class="text-muted">Total sale</span>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 m-t-20">
+                                        <h2 class="m-b-0 font-light">4000</h2><span class="text-muted">Iphone</span>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 m-t-20">
+                                        <h2 class="m-b-0 font-light">2000</h2><span class="text-muted">Ipad</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Today's Schedule</h5>
+                                <h6 class="card-subtitle">check out your daily schedule</h6>
+                                <div class="steamline m-t-40">
+                                    <div class="sl-item">
+                                        <div class="sl-left bg-success"> <i class="fa fa-user"></i></div>
+                                        <div class="sl-right">
+                                            <div class="font-medium">Meeting today <span class="sl-date"> 5pm</span>
+                                            </div>
+                                            <div class="desc">you can write anything </div>
+                                        </div>
+                                    </div>
+                                    <div class="sl-item">
+                                        <div class="sl-left bg-info"><i class="fa fa-image"></i></div>
+                                        <div class="sl-right">
+                                            <div class="font-medium">Send documents to Clark</div>
+                                            <div class="desc">Lorem Ipsum is simply </div>
+                                        </div>
+                                    </div>
+                                    <div class="sl-item">
+                                        <div class="sl-left"> <img class="img-circle" alt="user"
+                                                src="../assets/images/users/1.jpg"> </div>
+                                        <div class="sl-right">
+                                            <div class="font-medium">John Doe <span class="sl-date"> 5pm</span></div>
+                                            <div class="desc">Call today with gohn doe </div>
+                                        </div>
+                                    </div>
+                                    <div class="sl-item">
+                                        <div class="sl-left"> <img class="img-circle" alt="user"
+                                                src="../assets/images/users/2.jpg"> </div>
+                                        <div class="sl-right">
+                                            <div class="font-medium">Go to the Doctor <span class="sl-date">5 minutes
+                                                    ago</span></div>
+                                            <div class="desc">Contrary to popular belief</div>
+                                        </div>
+                                    </div>
+                                    <div class="sl-item">
+                                        <div class="sl-left"> <img class="img-circle" alt="user"
+                                                src="../assets/images/users/3.jpg"> </div>
+                                        <div class="sl-right">
+                                            <div><a href="#">Tiger Sroff</a> <span class="sl-date">5 minutes ago</span>
+                                            </div>
+                                            <div class="desc">Approve meeting with tiger
+                                                <br><a href="javascript:void(0)"
+                                                    class="btn m-t-10 m-r-5 btn-rounded btn-outline-success">Apporve</a>
+                                                <a href="javascript:void(0)"
+                                                    class="btn m-t-10 btn-rounded btn-outline-danger">Refuse</a> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+
+                <!-- News -->
+
+                <div class="row justify-content-center">
+                    <div class="col-12">
+                        <div class="card" id="tera-result">
+                            <div class="card-body">
+                                <div class="d-flex">
+                                    <div>
+                                        <h6 class="card-subtitle">Result:<span id="totalget"></span> / <span id="timeout"></span> </h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-borderless" id="tresult tera-table">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-justify"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="body-table">
+                                    </tbody>
+                                </table>
+                                <div id="pagination-wrapper"></div>
+                                <div clas="descript-p" id="descript"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                <!-- To do chat and message -->
+                <!-- 
+                <div id="result">
+                                        </div>
+                                        <button id="btn2">Append list items</button>
+                                        <ul class="art-vmenu">
+                                            <li>
+                                                <a href="#" data-id="1">Admin</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" data-id="2">Admin</a>
+                                            </li> 
+                                            <li>
+                                                <a href="#" data-id="3">Admin</a>
+                                            </li> 
+                                            <li>
+                                                <a href="#" data-id="4">Admin</a>
+                                            </li> 
+                                            <li>
+                                                <a href="#" data-id="5">Admin</a>
+                                            </li> 
+                                            <li>
+                                                <a href="#" data-id="6">Admin</a>
+                                            </li>  
+                                        </ul>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Feeds</h4>
+                            </div>
+                            <ul class="feeds p-b-20">
+                                <li>
+                                    <div class="bg-info"><i class="fa fa-bell-o"></i></div> You have 4 pending tasks.
+                                    <span class="text-muted">Just Now</span>
+                                </li>
+                                <li>
+                                    <div class="bg-success"><i class="ti-server"></i></div> Server #1 overloaded.<span
+                                        class="text-muted">2 Hours ago</span>
+                                </li>
+                                <li>
+                                    <div class="bg-warning"><i class="ti-shopping-cart"></i></div> New order
+                                    received.<span class="text-muted">31 May</span>
+                                </li>
+                                <li>
+                                    <div class="bg-danger"><i class="ti-user"></i></div> New user registered.<span
+                                        class="text-muted">30 May</span>
+                                </li>
+                                <li>
+                                    <div class="bg-dark"><i class="fa fa-bell-o"></i></div> New Version just arrived.
+                                    <span class="text-muted">27 May</span>
+                                </li>
+                                <li>
+                                    <div class="bg-info"><i class="fa fa-bell-o"></i></div> You have 4 pending tasks.
+                                    <span class="text-muted">Just Now</span>
+                                </li>
+                                <li>
+                                    <div class="bg-danger"><i class="ti-user"></i></div> New user registered.<span
+                                        class="text-muted">30 May</span>
+                                </li>
+                                <li>
+                                    <div class="bg-dark"><i class="fa fa-bell-o"></i></div> New Version just arrived.
+                                    <span class="text-muted">27 May</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Messages (5 New)</h5>
+                                <div class="message-box">
+                                    <div class="message-widget message-scroll">
+
+                                        <a href="javascript:void(0)">
+                                            <div class="user-img"> <img src="../assets/images/users/1.jpg" alt="user"
+                                                    class="img-circle"> <span
+                                                    class="profile-status online pull-right"></span> </div>
+                                            <div class="mail-contnet">
+                                                <h5>Pavan kumar</h5> <span class="mail-desc">Lorem Ipsum is simply dummy
+                                                    text of the printing and type setting industry. Lorem Ipsum has
+                                                    been.</span> <span class="time">9:30 AM</span>
+                                            </div>
+                                        </a>
+
+                                        <a href="javascript:void(0)">
+                                            <div class="user-img"> <img src="../assets/images/users/2.jpg" alt="user"
+                                                    class="img-circle"> <span
+                                                    class="profile-status busy pull-right"></span> </div>
+                                            <div class="mail-contnet">
+                                                <h5>Sonu Nigam</h5> <span class="mail-desc">I've sung a song! See you
+                                                    at</span> <span class="time">9:10 AM</span>
+                                            </div>
+                                        </a>
+
+                                        <a href="javascript:void(0)">
+                                            <div class="user-img"> <span class="round">A</span> <span
+                                                    class="profile-status away pull-right"></span> </div>
+                                            <div class="mail-contnet">
+                                                <h5>Arijit Sinh</h5> <span class="mail-desc">Simply dummy text of the
+                                                    printing and typesetting industry.</span> <span class="time">9:08
+                                                    AM</span>
+                                            </div>
+                                        </a>
+
+                                        <a href="javascript:void(0)">
+                                            <div class="user-img"> <img src="../assets/images/users/4.jpg" alt="user"
+                                                    class="img-circle"> <span
+                                                    class="profile-status offline pull-right"></span> </div>
+                                            <div class="mail-contnet">
+                                                <h5>Pavan kumar</h5> <span class="mail-desc">Just see the my
+                                                    admin!</span> <span class="time">9:02 AM</span>
+                                            </div>
+                                        </a>
+
+                                        <a href="javascript:void(0)">
+                                            <div class="user-img"> <img src="../assets/images/users/1.jpg" alt="user"
+                                                    class="img-circle"> <span
+                                                    class="profile-status online pull-right"></span> </div>
+                                            <div class="mail-contnet">
+                                                <h5>Pavan kumar</h5> <span class="mail-desc">Welcome to the Elite
+                                                    Admin</span> <span class="time">9:30 AM</span>
+                                            </div>
+                                        </a>
+                                        <a href="javascript:void(0)">
+                                            <div class="user-img"> <img src="../assets/images/users/2.jpg" alt="user"
+                                                    class="img-circle"> <span
+                                                    class="profile-status busy pull-right"></span> </div>
+                                            <div class="mail-contnet">
+                                                <h5>Sonu Nigam</h5> <span class="mail-desc">I've sung a song! See you
+                                                    at</span> <span class="time">9:10 AM</span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>-->
+            </div>
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- footer -->
+        <!-- ============================================================== -->
+        <footer class="footer">
+            <div class="footer-b">
+
+                <div class="footer-body">
+                    © 2020 Elegent Admin by <a href="#">wrappixel.com</a>
+                </div>
+               <div class="footer-body footer-menu">
+                    <a href="#">Feed Back</a>
+                    <a href="#">Service</a>
+                    <a href="#">About</a>
+                </div>
+                <div class="footer-body social-menu">
+                    Visit:
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-github"></i></a>
+                </div>
+            </div>
+        </footer>
+        <!-- ============================================================== -->
+        <!-- End footer -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+
+    <!--
+security
+dns
+themes
+    -->
+    <script type="text/javascript" src="{{ url_for('static', filename='assets/node_modules/AES/aes.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/js.geotools/dist/geotools.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/js.geotools/dist/geotools-swedish-zipcodes.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/moment@2.24.0/moment.min.js"></script>
+    <script type="text/javascript">
+    var host = window.location.origin;
+
+    var hostname = location.hostname;
+    function setCookie(name,value,days) {
+            var expires = "";
+            if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + (days*24*60*60*1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "")  + expires + "; path=/; " + "domain="+hostname+";";
+        }
+    function getCookie(name) {
+            var nameEQ = name + "=";
+            var ca = document.cookie.split(';');
+            for(var i=0;i < ca.length;i++) {
+                var c = ca[i];
+                while (c.charAt(0)==' ') c = c.substring(1,c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+            }
+            return null;
+        }
+    function eraseCookie(name) {   
+            document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+        }
+
+
+    function randomInteger(min, max) {
+          return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+    function makeid(length) {
+            var result           = '';
+            var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            var charactersLength = characters.length;
+            for ( var i = 0; i < length; i++ ) {
+              result += characters.charAt(Math.floor(Math.random() * 
+         charactersLength));
+           }
+           return result;
+    }
+
+    function filter(string){
+        const filt= string.replace(/(<([^>]+)>)/ig, '[caps]').split("[caps]").filter(x=>x!="");
+        return filt.join(' ');
+    }
+    </script>
+    <script type="text/javascript">
+    const logic_storage = "tera_logic";
+    
+    ///Select document 
+    const sec_checkbox = document.getElementById('security');
+    const dns_checkbox = document.getElementById('dns');
+    const themes_checkbox = document.getElementById('themes');
+
+    const header       = document.getElementById("navbar");
+    const container    = document.getElementById("pages");
+    const result_subs  = document.getElementById("tera-result");
+    const table_result = document.getElementById("tera-table");
+    const tbody = document.getElementById("body-table");
+
+    var element = document.getElementById("new");
+    var json_data = {
+        security:"xnone",
+        dns:"xnone",
+        themes:"xnone",
+        keys:"xnone"
+    };
+    
+    function Thems_func(classname, arg, option){
+        switch(option) {
+                case 'ADD':
+                    $(classname).css(arg);
+                    break;
+                case 'DELETE':
+                    $(classname).removeAttr("style");
+                    break;
+                default:
+                    break;    
+            }
+        return classname;
+    }
+
+    function Select_Query(key, args){
+        if (json_data[key] == args[0]) {
+            json_data[key] = args[0];
+        }
+        else{
+            json_data[key] = args[1];
+        }
+        return json_data[key];
+    }
+
+    $(document).ready(function(){
+        ///Filture_Select();
+        console.log(Select_Query('security', ['xnone', 'niohohoho']));
+
+
+
+
+
+
+        /////////Load Cookie tera-cookie
+        //if (getCookie("tera-cookie")){
+          //  console.log(UTF8ArrToStr(base64DecToArr(getCookie("tera-cookie"))) );
+        //}
+
+        $(".card-subtitle").hide();
+
+        if (typeof(Storage) !== "undefined") {
+            console.log("local storage available");
+        }
+        else {
+            console.log("Oops. you data will gone after page reload");
+        }
+
+        if(todoFromLocal = localStorage.getItem(logic_storage)) {
+            json_data = JSON.parse(todoFromLocal);
+            console.log(true);
+            
+            if(json_data['security'] == 'xnone') {
+                sec_checkbox.checked = false;
+            }
+            else {
+                sec_checkbox.checked = true;
+            }
+
+            if(json_data['dns'] == 'xnone') {
+                dns_checkbox.checked = false;
+            }
+            else {
+                dns_checkbox.checked = true;
+            }
+
+            if(json_data['themes'] == 'xnone') {
+                themes_checkbox.checked = false;
+                Thems_func(header, "", "DELETE");
+                Thems_func(container, "", "DELETE");
+                Thems_func(result_subs, "", "DELETE");
+                Thems_func(table_result, "", "DELETE");
+                Thems_func(tbody, "", "DELETE");
+            }
+            else {
+                themes_checkbox.checked = true;
+                Thems_func(header, {"background-color":"#2b2f3a", "color": "#f7f7f8"}, "ADD");
+                Thems_func(container, {"background-color":"#17191d", "color": "#ffffff"}, "ADD");
+                Thems_func(result_subs, {"background-color":"transparent", "color": "#f7f7f8"}, "ADD");
+                Thems_func(table_result, {"color": "#ffffff"}, "ADD");
+                Thems_func(tbody, {"color": "#ffffff"}, "ADD");
+            }
+
+        }
+        else {
+            localStorage.setItem(logic_storage, JSON.stringify(json_data));
+        }
+
+        function syncLocalStorage(activity, item, status = false) {
+            switch(activity) {
+                case 'ADD':
+                case 'UPDATE':
+                    json_data[item] = status
+                    break;
+                case 'DELETE':
+                    delete json_data[item]
+                    break;
+                default:
+                    break;    
+            }
+
+            localStorage.setItem(logic_storage, JSON.stringify(json_data));
+            return
+        }
+
+        function update(){
+            localStorage.setItem(logic_storage, JSON.stringify(json_data));
+        }
+
+
+        /////// Todo check checkbox ////////////////
+       ////////////////////////////////////////////
+        $('input[name="security"]').click(function(){
+            if($(this).prop("checked") == true){
+                console.log("security is checked.");
+                json_data['security'] = "true";
+                update();
+            }
+            else if($(this).prop("checked") == false){
+                console.log("security is unchecked.");
+                json_data['security'] = "xnone";
+                update();
+            }
+        });
+
+        $('input[name="dns"]').click(function(){
+            if($(this).prop("checked") == true){
+                console.log("dns is checked.");
+                json_data['dns'] = "true";
+                update();
+            }
+            else if($(this).prop("checked") == false){
+                console.log("dns is unchecked.");
+                json_data['dns'] = "xnone";
+                update();
+            }
+        });
+
+        $('input[name="themes"]').click(function(){
+            if($(this).prop("checked") == true){
+                console.log("themes is checked.");
+                json_data['themes'] = "true";
+                update();
+                Thems_func(header, {"background-color":"#2b2f3a", "color": "#f7f7f8"}, "ADD");
+                Thems_func(container, {"background-color":"#17191d", "color": "#ffffff"}, "ADD");
+                Thems_func(result_subs, {"background-color":"transparent", "color": "#f7f7f8"}, "ADD");
+                Thems_func(table_result, {"color": "#ffffff"}, "ADD");
+                Thems_func(tbody, {"color": "#ffffff"}, "ADD");
+            }
+            else if($(this).prop("checked") == false){
+                console.log("themes is unchecked.");
+                json_data['themes'] = "xnone";
+                update();
+                Thems_func(header, "", "DELETE");
+                Thems_func(container, "", "DELETE");
+                Thems_func(result_subs, "", "DELETE");
+                Thems_func(table_result, "", "DELETE");
+                Thems_func(tbody, "", "DELETE");
+            }
+        });
+        
+
+        //$("#btn2").click(function(){
+          //  var xx = 1;
+            //$("#result").append(`<a data-result='12'>result</a>`);
+       //   });
+        $(document).keyup(function(event) {
+            if ($(".app-search").attr("method") == "POST" && $(".form-control").is(":focus") && event.key == "Enter") {
+                //alert($(".form-control").val());
+                var proxy = "{}";
+                var totalpages = document.getElementById("per-pages").value;
+                var agent = document.getElementById("proxy-select").value;
+                if(sec_checkbox.checked == true){
+                    proxy = '{"keys": "https", "num": 12}'
+                }
+                let links = host+'/v1/post';
+                //alert(links);
+
+
+                $.getJSON(links, {
+                        'q': $(".form-control").val(),
+                        'u': agent,
+                        'r': 'default',
+                        't': 'None',
+                        'x': totalpages,
+                        'proxies': proxy
+                        },
+
+
+
+                    function(data){
+                    const begintime = parseInt("{{ g.request_time() }}");
+
+                    elements_result = data.result;
+                    //console.log( base64EncArr(strToUTF8Arr(JSON.stringify(elements_result))) );
+
+                    var state = {
+                        'querySet': elements_result,
+
+                        'page': 1,
+                        'rows': 12,
+                        'window': 5,
+                    }
+                    const endtime = Date.now();
+                    var totalres = (begintime * navigator.connection.downlink + endtime);
+                    totalres = totalres/navigator.connection.downlink;
+
+                    buildTable();
+
+                    $(".card-subtitle").show();
+                    document.getElementById("totalget").innerText = parseInt(totalres/6);
+                    totalres = totalres % 5;
+                    totalres = totalres / randomInteger(navigator.connection.downlink, 34)
+                    console.log()
+                    document.getElementById("timeout").innerText =  totalres*navigator.connection.downlink/randomInteger(2, 4) +"s";
+
+                function pagination(querySet, page, rows) {
+
+                    var trimStart = (page - 1) * rows
+                    var trimEnd = trimStart + rows
+
+                    var trimmedData = querySet.slice(trimStart, trimEnd)
+
+                    var pages = Math.round(querySet.length / rows);
+
+                    return {
+                        'querySet': trimmedData,
+                        'pages': pages,
+                    }
+                }
+
+                function pageButtons(pages) {
+                    var wrapper = document.getElementById('pagination-wrapper')
+
+                    wrapper.innerHTML = ``
+                    console.log('Pages:', pages)
+
+                    var maxLeft = (state.page - Math.floor(state.window / 2))
+                    var maxRight = (state.page + Math.floor(state.window / 2))
+
+                    if (maxLeft < 1) {
+                        maxLeft = 1
+                        maxRight = state.window
+                    }
+
+                    if (maxRight > pages) {
+                        maxLeft = pages - (state.window - 1)
+                        
+                        if (maxLeft < 1){
+                            maxLeft = 1
+                        }
+                        maxRight = pages
+                    }
+                    
+                    
+
+                    for (var page = maxLeft; page <= maxRight; page++) {
+                        wrapper.innerHTML += `<button value=${page} class="page tera-button">${page}</button>`
+                    }
+
+                    if (state.page != 1) {
+                        wrapper.innerHTML = `<button value=${1} class="page tera-button">&#171; First</button>` + wrapper.innerHTML
+                    }
+
+                    if (state.page != pages) {
+                        wrapper.innerHTML += `<button value=${pages} class="page tera-button">Last &#187;</button>`
+                    }
+
+                    $('.page').on('click', function() {
+                        $('tbody').empty()
+
+                        state.page = Number($(this).val())
+
+                        buildTable()
+                    })
+
+                }
+
+
+                function buildTable() {
+                    var table = $('tbody')
+
+                    var data = pagination(state.querySet, state.page, state.rows);
+                    var myList = data.querySet;
+                    //$.each(myList, function (i, f) {
+                      //        table.append(`<tr><td class="text-justify"><a  data-id=${f.href}>${f.title}</a></td></tr>`);
+                              //<a class=tera-link href='#' data-value='" + f.href+"'>"+ f.title+"  | "+validateURL(f.href)+"</a><p class=tera-descript>"+f.body+"
+                    //});
+                    var row = '';
+                    for (let i = 0; i < myList.length; i++) {
+                        row = `
+                        <tr>
+                            <td>
+                                <a class=tera-title href=# data-id=${base64EncArr(strToUTF8Arr(myList[i].href))} >${filter(myList[i].title)}</a>
+                                <p class=tera-descript id=descript>${filter(myList[i].body)}</p>
+
+                            </td>
+                        </tr>`;
+                        $('tbody').append(row);
+
+                        ///responsive
+                        if ($(window).width() < 960) {
+                            Thems_func('[id=descript]', {"width": "100%"}, "ADD");
+                        }
+                        else{
+                            Thems_func('[id=descript]', {"width":"74%"}, "ADD");
+                        }
+
+                    }
+
+                    pageButtons(data.pages);
+                }
+
+
+                    
+                });
+
+            }
+        });
+
+
+
+
+
+function pagination(querySet, page, rows) {
+
+    var trimStart = (page - 1) * rows
+    var trimEnd = trimStart + rows
+
+    var trimmedData = querySet.slice(trimStart, trimEnd)
+
+    var pages = Math.round(querySet.length / rows);
+
+    return {
+        'querySet': trimmedData,
+        'pages': pages,
+    }
+}
+
+function pageButtons(pages) {
+    var wrapper = document.getElementById('pagination-wrapper')
+
+    wrapper.innerHTML = ``
+    console.log('Pages:', pages)
+
+    var maxLeft = (state.page - Math.floor(state.window / 2))
+    var maxRight = (state.page + Math.floor(state.window / 2))
+
+    if (maxLeft < 1) {
+        maxLeft = 1
+        maxRight = state.window
+    }
+
+    if (maxRight > pages) {
+        maxLeft = pages - (state.window - 1)
+        
+        if (maxLeft < 1){
+            maxLeft = 1
+        }
+        maxRight = pages
+    }
+    
+    
+
+    for (var page = maxLeft; page <= maxRight; page++) {
+        wrapper.innerHTML += `<button value=${page} class="page btn btn-sm btn-info">${page}</button>`
+    }
+
+    if (state.page != 1) {
+        wrapper.innerHTML = `<button value=${1} class="page btn btn-sm btn-info">&#171; First</button>` + wrapper.innerHTML
+    }
+
+    if (state.page != pages) {
+        wrapper.innerHTML += `<button value=${pages} class="page btn btn-sm btn-info">Last &#187;</button>`
+    }
+
+    $('.page').on('click', function() {
+        $('tbody').empty()
+
+        state.page = Number($(this).val())
+
+        buildTable()
+    })
+
+}
+
+
+function buildTable() {
+    var table = $('tbody')
+
+    var data = pagination(state.querySet, state.page, state.rows)
+    var myList = data.querySet
+
+    for (var i = 1 in myList) {
+        //Keep in mind we are using "Template Litterals to create rows"
+        i = i;
+        var row = `<tr>
+                  <td class=text-justify><a class=tera-link href='#' data-value=${myList[i].href}></a> ${myList[i].body}</td></tr>
+                  `
+        table.append(row)
+    }
+
+    pageButtons(data.pages)
+}
+
+
+        $('td', 'table').each(function(i) {
+            $(this).text(i+1);
+        });
+
+
+
+        $('table.table').each(function() {
+            var currentPage = 0;
+            var numPerPage = 4;
+            var $table = $(this);
+            $table.bind('repaginate', function() {
+                $table.find('tbody tr').hide().slice(currentPage * numPerPage, (currentPage + 1) * numPerPage).show();
+            });
+            $table.trigger('repaginate');
+            var numRows = $table.find('tbody tr').length;
+            var numPages = Math.ceil(numRows / numPerPage);
+            var $pager = $('<div class="pager"></div>');
+            for (var page = 0; page < numPages; page++) {
+                $('<span class="page-number"></span>').text(page + 1).bind('click', {
+                    newPage: page
+                }, function(event) {
+                    currentPage = event.data['newPage'];
+                    $table.trigger('repaginate');
+                    $(this).addClass('active').siblings().removeClass('active');
+                }).appendTo($pager).addClass('clickable');
+            }
+            $pager.insertBefore($table).find('span.page-number:first').addClass('active');
+        });
+
+
+        $("tbody#body-table").on("click","tr", function(){
+            var anchor = $(this).find("td").children('a');
+            $(anchor).click(function(){
+                if (dns_checkbox.checked == true){
+                    var sec = true;
+                }
+                else{
+                    var sec = false;
+                }
+                rediretion =  `${host}/v1/${makeid(100)}/openurls?urls=${ UTF8ArrToStr(base64DecToArr(anchor.attr("data-id"))) }`;
+                window.location.href = rediretion;
+            });
+        });
+
+
+
+        ///REsponse Widht
+
+    });
+    </script>
+    <!-- Bootstrap popper Core JavaScript -->
+    <script src="{{ url_for('static', filename='assets/node_modules/popper/popper.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/node_modules/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="{{ url_for('static', filename='dist/js/perfect-scrollbar.jquery.min.js') }}"></script>
+    <!--Wave Effects -->
+    <script src="{{ url_for('static', filename='dist/js/waves.js') }}"></script>
+    <!--Menu sidebar -->
+    <script src="{{ url_for('static', filename='dist/js/sidebarmenu.js') }}"></script>
+    <!--Custom JavaScript -->
+    <script src="{{ url_for('static', filename='dist/js/custom.min.js') }}"></script>
+    <!-- ============================================================== -->
+    <!-- This page plugins -->
+    <!-- ============================================================== -->
+    <!--morris JavaScript -->
+    <script src="{{ url_for('static', filename='assets/node_modules/jquery-sparkline/jquery.sparkline.min.js') }}"></script>
+    <!--c3 JavaScript -->
+    <script src="{{ url_for('static', filename='assets/node_modules/d3/d3.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/node_modules/c3-master/c3.min.js') }}"></script>
+    <!-- Chart JS -->
+    <script src="{{ url_for('static', filename='dist/js/dashboard1.js') }}"></script>
+
+</body>
+
+</html>

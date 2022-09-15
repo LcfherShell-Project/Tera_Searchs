@@ -1,0 +1,16 @@
+<p id="messages">
+<script type="text/javascript">
+var sessions = "{{sessions}}";
+var popup = "{{popup}}";
+var host = window.location.origin;
+host+'/v1/post?q='
+if (parseInt(sessions) ==100 || parseInt(sessions) >=60  && popup == "fail"){
+	window.location.href = "{{urls}}"; 
+}
+else{
+	var yurl= "{{urls}}";
+	document.getElementById("messages").innerHTML = `<h3 class='title'>Warning!</h3>
+	this website is vulnerable to data leakage or theft, do you want to continue? <small><a href=${yurl}> confirm</a></small>
+	`;
+}
+</script>
